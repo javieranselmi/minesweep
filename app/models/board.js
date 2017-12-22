@@ -47,4 +47,16 @@ Board.prototype.tileClicked = function(tile) {
     return tile.clicked();
 };
 
-module.exports = Tile;
+Board.prototype.tileClickedAt = function(top, left) {
+    let tile = _.find(this.tiles, (tile) => {
+        return (tile.top === top && tile.left === left)
+    });
+    if (tile) {
+        return this.tileClicked(tile);
+    } else {
+        throw new Error('Tile does not exist.');
+    }
+
+};
+
+module.exports = Board;
