@@ -38,6 +38,10 @@ Tile.prototype.isSafe = function() {
     return (this.content === ContentType.empty);
 };
 
+Tile.prototype.is = function(tile) {
+    return (this.top === tile.top && this.left === tile.left);
+};
+
 Tile.prototype.mineProximityValue = function() {
     return this.board.neighboursWithMinesFor(this).length;
 };
