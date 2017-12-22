@@ -38,17 +38,20 @@ Board.prototype.initializeTiles = function(height, width, mines) {
 };
 
 Board.prototype.neighboursWithMinesFor = function(tile) {
+
     return _.filter(this.neighboursFor(tile), (tile) => {
         return tile.isMine();
     });
 };
 
 Board.prototype.neighboursFor = function(tile) {
-    let adjacentTopValues =  [tile.top + 1, tile.top - 1];
-    let adjacentLeftValues = [tile.left + 1, tile.left - 1];
+    let adjacentTopValues =  [tile.top + 1, tile.top, tile.top - 1];
+    let adjacentLeftValues = [tile.left + 1, tile.left, tile.left - 1];
 
-    return this.tiles.filter((tile) => {
-        return (_.includes(adjacentTopValues, tile.top) || _.includes(adjacentLeftValues, tile.left));
+    return this.tiles.filter((potentialNeighbourTile) => {
+        return (_.includes(adjacentTopValues, potentialNeighbourTile.top) &&
+        _.includes(adjacentLeftValues, potentialNeighbourTile.left) &&
+        !tile.is(potentialNeighbourTile));
     });
 };
 
