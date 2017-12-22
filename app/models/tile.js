@@ -5,10 +5,11 @@ let ContentType = require('../constants/content_type');
 let TileState = require('../constants/tile_state');
 let _ = require("lodash");
 
-function Tile(top, left, board) {
+function Tile(top, left, content, board) {
+
     this.top = top;
     this.left = left;
-    this.content = ContentType.empty;
+    this.content = content || ContentType.empty;
     this.board = board;
     this.state = TileState.hidden
 };
