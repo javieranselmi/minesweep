@@ -8,7 +8,7 @@ module.exports = function(tile) {
         content: tile.state === TileState.hidden ? ContentType.unknown : tile.content,
         realContent: tile.content, //TODO: Remove. This is for debug only
         state: tile.state,
-        mineProximityValue: tile.mineProximityValue(),
+        mineProximityValue: tile.state === TileState.hidden ? ContentType.unknown : tile.mineProximityValue(),
 
     };
 };
