@@ -4,8 +4,9 @@
 
 let Tile = require("./tile");
 let _ = require("lodash");
+let ContentType = require('../constants/content_type');
 
-function Board(height, width, time) {
+function Board(height, width, time, mines) {
 
     this.height = height;
     this.width = width;
@@ -13,17 +14,25 @@ function Board(height, width, time) {
     this.tiles = [];
     this.end = false;
 
-    this.initializeTiles(height, width);
+    this.initializeTiles(height, width, mines);
 };
 
 function validate(height, width, time) {
     //Validations for the constructor function values. Will do if I have time
 }
 
-Board.prototype.initializeTiles = function(height, width) {
+Board.prototype.initializeTiles = function(height, width, mines) {
+
+    let totalTiles = height * width;
+
+    let mineArray = _.fill(Array(Number(mines)), ContentType.mine);
+    let emptyArray = _.fill(Array(totalTiles - mines), ContentType.empty);
+
+    let tileContents = _.shuffle(_.concat(mineArray, emptyArray));
+
     _.times(height, (col) => {
         _.times(width, (row) => {
-            this.tiles.push(new Tile(col, row, this));
+            this.tiles.push(new Tile(col, row, tileContents.pop(), this));
         })
     });
 };
