@@ -6,6 +6,9 @@ module.exports = function(tile) {
         top: tile.top,
         left: tile.left,
         content: tile.state === TileState.hidden ? ContentType.unknown : tile.content,
-        state: tile.state
+        realContent: tile.content, //TODO: Remove. This is for debug only
+        state: tile.state,
+        mineProximityValue: tile.mineProximityValue(),
+
     };
 };
