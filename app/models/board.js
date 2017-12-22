@@ -2,7 +2,7 @@
  * Created by javieranselmi on 12/21/17.
  */
 
-let Tile = require("tile");
+let Tile = require("./tile");
 let _ = require("lodash");
 
 function Board(height, width, time) {

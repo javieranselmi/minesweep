@@ -1,4 +1,5 @@
-let TileView = require("tile_view");
+let ContentType = require('../constants/content_type');
+let TileState = require('../constants/tile_state');
 
 module.exports = function(game) {
     return {

@@ -1,8 +1,9 @@
 /**
  * Created by javieranselmi on 12/21/17.
  */
-ContentType = require('../constants/content_type');
-TileState = require('../constants/tile_state');
+let ContentType = require('../constants/content_type');
+let TileState = require('../constants/tile_state');
+let _ = require("lodash");
 
 function Tile(top, left, board) {
     this.top = top;

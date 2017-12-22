@@ -1,4 +1,4 @@
-let Board = require("board");
+let Board = require("./board");
 
 let currentGame = new Board();
 
