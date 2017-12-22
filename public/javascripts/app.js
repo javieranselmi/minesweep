@@ -1,6 +1,11 @@
+//CHANGE HERE TO CHOOSE WIDTH AND HEIGHT AND MINE NUMBER
+
 var rows = 16;
 var columns = 16;
 var mines = 12;
+
+///////////////////////////////////////////////////////
+
 
 function reset() {
 
