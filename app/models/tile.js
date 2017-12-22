@@ -25,6 +25,10 @@ Tile.prototype.show = function() {
     this.state = TileState.visible;
 };
 
+Tile.prototype.isHidden = function() {
+    return (this.state === TileState.hidden);
+};
+
 Tile.prototype.isMine = function() {
     return (this.content === ContentType.mine);
 };
@@ -44,10 +48,12 @@ Tile.prototype.clicked = function() {
         return true;
     } else {
         this.show();
-        if (this.mineProximityValue === 0) {
-            this.board.neighboursFor(this).each((neighbour) => {
-                neighbour.clicked();
-            })
+        if (this.mineProximityValue() === 0) {
+            _.each(this.board.neighboursFor(this), (neighbour) => {
+                if (neighbour.isHidden()) {
+                    neighbour.clicked();
+                }
+            });
         }
     }
 };
